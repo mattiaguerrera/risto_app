@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "risto-app-fa685": {
+      "hosting": {
+        "risto_app": [
+          "risto-app-fa685"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "risto-app-fa685"
+  }
+}
