@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "/src/assets/styles/bootstrap.min.css";
+@import "/src/assets/styles/custom.min.css";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    margin: 0;
+    font-family: var(--bs-body-font-family) !important;
+    font-size: var(--bs-body-font-size) !important;
+    font-weight: var(--bs-body-font-weight) !important;
+    line-height: var(--bs-body-line-height) !important;
+    color: var(--bs-body-color) !important;
+    text-align: var(--bs-body-text-align) !important; 
+    background-color: var(--bs-body-bg) !important;
+    --webkit-text-size-adjust: 100% !important;
+    --webkit-tap-highlight-color: transparent !important;
+}

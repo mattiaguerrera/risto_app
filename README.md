@@ -25,3 +25,20 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Info Testing App
+
+Deleting angular material css for angular.json to styles node:
+> "@angular/material/prebuilt-themes/pink-bluegrey.css"
+
+## JSON Server Auth
+
+Install both JSON Server and JSON Server Auth :
+// NPM
+> npm install -D json-server json-server-auth
+
+Start JSON server (with JSON server Auth as middleware) :
+> json-server .\src\assets\files\data.json -d 1000 -p 7000 -m ./node_modules/json-server-auth
+
+json-server .\src\assets\api\movies.json -d 1000 -p 7000
