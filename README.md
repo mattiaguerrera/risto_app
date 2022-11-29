@@ -26,6 +26,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## Firebase Deploy
+
+> npm build
+> npm install -g firebase-tools
+> firebase login --reauth
+> firebase deploy
 
 ## Info Testing App
 
@@ -42,3 +48,7 @@ Start JSON server (with JSON server Auth as middleware) :
 > json-server .\src\assets\files\data.json -d 1000 -p 7000 -m ./node_modules/json-server-auth
 
 json-server .\src\assets\api\movies.json -d 1000 -p 7000
+
+## Hosting
+// Firebase o NuxtJs
+// Hosting su Vercel e Netlify che son gratuiti

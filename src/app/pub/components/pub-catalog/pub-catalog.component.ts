@@ -72,20 +72,24 @@ export class PubCatalogComponent implements AfterViewInit {
 
   ngOnInit() {  
     this.sub = this.pubService.get().subscribe({
-      next: (data: any) => {
+      next: (data: Pub[]) => {
         this.dataSource = new MatTableDataSource(data);
+        if(this.dataSource) {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }    
       },
       error: (error: any) => {
         console.log(error);
       }
-    });  
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));    
-       
+    });         
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // if(this.dataSource) {
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    //}    
   }
 
   applyFilter(event: Event) {

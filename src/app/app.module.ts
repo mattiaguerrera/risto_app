@@ -13,11 +13,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from './material/material.module';
 import { FooterComponent } from './footer/footer.component';
-import { BodyComponent } from './body/body.component';
+import { HomeComponent } from './home/home.component';
 import { PubCatalogComponent } from './pub/components/pub-catalog/pub-catalog.component';
 import { PubDetailComponent } from './pub/components/pub-detail/pub-detail.component';
-import { LoginComponent } from './login/components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './user/components/login/login.component';
+import { RegistrationComponent } from './user/components/registration/registration.component';
 
 
 @NgModule({
@@ -25,10 +27,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent,
+    HomeComponent,
     PubCatalogComponent,
     PubDetailComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
