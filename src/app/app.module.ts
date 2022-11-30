@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './user/components/login/login.component';
 import { RegistrationComponent } from './user/components/registration/registration.component';
-
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { RegistrationComponent } from './user/components/registration/registrati
     PubDetailComponent,
     LoginComponent,
     PageNotFoundComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

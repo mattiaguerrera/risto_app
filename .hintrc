@@ -14,7 +14,8 @@
       {
         "aria-allowed-attr": "off"
       }
-    ]
+    ],
+    "no-inline-styles": "off"
   },
   "browserslist": [
     "defaults",

@@ -31,7 +31,11 @@
               "@angular/material/prebuilt-themes/pink-bluegrey.css",        
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/canvas/js/jquery.js",
+              "src/assets/canvas/js/plugins.min.js",
+              "src/assets/canvas/js/functions.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -100,7 +104,10 @@
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/canvas/js/jquery.js",
+              "src/assets/canvas/js/plugins.min.js",
+              "src/assets/canvas/js/functions.js"]
           }
         },
         "deploy": {
