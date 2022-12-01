@@ -1,78 +1,63 @@
-<div class="page-header" id="banner">
-    <div class="row">
-        <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>Sketchy</h1>
-            <p class="lead">A hand-drawn look for mockups and mirth</p>
-        </div>
-        <div class="col-lg-4 col-md-5 col-sm-6">
-        </div>
-    </div>
-</div>
-<!-- Navbar
-================================================== -->
 <div class="bs-docs-section clearfix">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="page-header">
-                <h1>Lista Ristoranti</h1>
-            </div>
-            <div class="bs-component">
-                <mat-form-field>
-                    <mat-label>Filter</mat-label>
-                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-                  </mat-form-field>
-                  
-                  <div class="mat-elevation-z8">
-                    <table mat-table [dataSource]="dataSource" matSort>
-                  
-                      <!-- ID Column -->
-                      <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-                        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                      </ng-container>
-                      
-                      <!-- Name Column -->
-                      <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-                      </ng-container>
-                  
-                      <!-- City Column -->
-                      <ng-container matColumnDef="city">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
-                        <td mat-cell *matCellDef="let row"> {{row.city}} </td>
-                      </ng-container>
-                  
-                      <!-- Type Column -->
-                      <ng-container matColumnDef="type">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-                        <td mat-cell *matCellDef="let row"> {{row.type}} </td>
-                      </ng-container>
-                  
-                      <!-- Price Column -->
-                      <ng-container matColumnDef="price">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-                        <td mat-cell *matCellDef="let row"> {{row.price}} </td>
-                      </ng-container>
-                      
-                      <!-- vote Column -->
-                      <ng-container matColumnDef="vote">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Vote </th>
-                        <td mat-cell *matCellDef="let row"> {{row.vote}} </td>
-                      </ng-container>
-                  
-                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  
-                      <!-- Row shown when there is no matching data. -->
-                      <tr class="mat-row" *matNoDataRow>
-                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-                      </tr>
-                    </table>
-                  
-                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of pubs"></mat-paginator>
-                  </div>                                                   
-            </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <!-- City Column -->
+            <ng-container matColumnDef="city">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+              <td mat-cell *matCellDef="let row"> {{row.city}} </td>
+            </ng-container>
+
+            <!-- Type Column -->
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+              <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+            </ng-container>
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+              <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+            </ng-container>
+
+            <!-- vote Column -->
+            <ng-container matColumnDef="vote">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Vote </th>
+              <td mat-cell *matCellDef="let row"> {{row.vote}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of pubs"></mat-paginator>
         </div>
+      </div>
     </div>
+  </div>
 </div>
