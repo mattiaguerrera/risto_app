@@ -19,6 +19,12 @@
 @import "/src/assets/canvas/css/colors.css";
 
 
+.container-pubs th,
+.container-pubs td {
+    font-family: cookie, cursive !important; // poppins, sans-serif !important
+    font-size: 26px;
+}
+
 
 /* https://bootswatch.com/ */
 // @import "/src/assets/styles/bootstrap.min.css";
