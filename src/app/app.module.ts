@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './user/components/login/login.component';
 import { RegistrationComponent } from './user/components/registration/registration.component';
 import { SliderComponent } from './slider/slider.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SliderComponent } from './slider/slider.component';
     LoginComponent,
     PageNotFoundComponent,
     RegistrationComponent,
-    SliderComponent
+    SliderComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

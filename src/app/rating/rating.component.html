@@ -1,0 +1,19 @@
+<div class="rating-container theme-krajee-svg rating-sm rating-animate is-heart">
+    <div class="rating-stars" tabindex="0">
+        <span class="empty-stars">
+            <span class="star" title="One Star"><i class="icon-circle-blank"></i></span>
+            <span class="star" title="Two Stars"><i class="icon-circle-blank"></i></span>
+            <span class="star" title="Three Stars"><i class="icon-circle-blank"></i></span>
+            <span class="star" title="Four Stars"><i class="icon-circle-blank"></i></span>
+            <span class="star" title="Five Stars"><i class="icon-circle-blank"></i></span>
+        </span>
+        <span class="filled-stars" style="width: 33%;">
+            <span class="star" title="One Star"><i class="icon-circle2"></i></span>
+            <span class="star" title="Two Stars"><i class="icon-circle2"></i></span>
+            <span class="star" title="Three Stars"><i class="icon-circle2"></i></span>
+            <span class="star" title="Four Stars"><i class="icon-circle2"></i></span>
+            <span class="star" title="Five Stars"><i class="icon-circle2"></i></span>
+        </span>
+    </div>
+    <div *ngIf="rating == 0 || rating == null" class="caption"><span class="caption-badge caption-secondary">Not Rated</span></div>
+</div>
