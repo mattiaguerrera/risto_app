@@ -7714,7 +7714,7 @@ body:not(.device-touch) .portfolio {
 
 .entry-meta i {
 	position: relative;
-	top: 1px;
+	top: -2px;
 	padding-left: 1px;
 	margin-right: 5px;
 }
@@ -16518,7 +16518,7 @@ label.checkbox { padding-left: 20px; }
 
 .rating-xs { font-size: 1.25rem !important; }
 
-.rating-container .star { margin: 0 2px !important; }
+.rating-container .star { margin: 0 0 !important; }
 
 .rating-container .filled-stars {
 	-webkit-text-stroke: 0px !important;

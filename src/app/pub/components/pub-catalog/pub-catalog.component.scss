@@ -16,3 +16,72 @@ th {
 .mdc-data-table__header-cell {
   padding: 20px 20px;
 }
+
+/* List Pubs */
+
+h4 {
+  color: #333 !important;
+}
+
+[class*="col-"]:not([class*="sticky-"]):not([class*="position-"]) {
+  position: relative;
+}
+
+.list-unstyled {
+  list-style-image: initial;
+}
+
+.topic {
+  padding: 30px 0;
+  border-bottom: 1px solid #f9be7950;
+
+  .entry {
+    box-shadow: none !important;
+
+    // h4 {
+    //   font-size: 1.375rem;
+    //   font-weight: 700;
+    //   color: #333 !important;
+    // }
+  }
+  .entry-meta {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    ul {
+      list-style-image: initial;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 0 0 -10px -20px;
+      list-style: none;
+      li {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: #999;
+        font-size: 90%;
+        margin: 0;
+        padding: 5px 20px;
+        color: #333 !important;
+      }
+    }
+
+    &:not(.no-separator) li::before {
+      color: rgb(249, 186, 112);
+      content: "\e7b0";
+      font-family: font-icons;
+      font-size: 6px;
+      opacity: 1;
+      color: #f9be79;
+      vertical-align: middle;
+      content: "\205E";
+      width: 5px;
+      text-align: center;
+      display: none; //inline-block
+      margin-right: 15px;
+      opacity: 0.5;
+    }
+  }
+}
