@@ -7714,9 +7714,9 @@ body:not(.device-touch) .portfolio {
 
 .entry-meta i {
 	position: relative;
-	top: -2px;
+	top: 0px;
 	padding-left: 1px;
-	margin-right: 5px;
+	margin-right: 1px;
 }
 
 .entry-meta a:not(:hover) { color: #999; }
