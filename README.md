@@ -47,8 +47,6 @@ Install both JSON Server and JSON Server Auth :
 Start JSON server (with JSON server Auth as middleware) :
 > json-server .\src\assets\files\data.json -d 1000 -p 7000 -m ./node_modules/json-server-auth
 
-json-server .\src\assets\api\movies.json -d 1000 -p 7000
-
 ## Hosting
 // Firebase o NuxtJs
 // Hosting su Vercel e Netlify che son gratuiti

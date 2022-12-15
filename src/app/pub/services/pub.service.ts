@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, of, take, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pub } from '../models/pub';
 
@@ -12,13 +12,13 @@ export class PubService {
   constructor(private http: HttpClient) { }
 
   get(): Observable<Pub[]> {
-    const list = this.http.get<Pub[]>(environment.urlPub);
+    const list = this.http.get<Pub[]>(environment.urlPub).pipe(map(x => x.slice(0,99)));
     return list;
   }
 
   getbyID(id: number): Observable<Pub> {
     if (id === 0)
-      return of(this.initializePub());
+      return of();
 
     let url = (`${environment.urlPub}/${id}`);
     return this.http.get<Pub>(url)
@@ -67,21 +67,6 @@ export class PubService {
     console.error(errorMessage);
     return throwError(() => errorMessage);
   }
-
-  private initializePub(): Pub {
-    return {
-      id: 0,
-      name: 'string',
-      city: 'string',
-      type: 'string',
-      vote: 0,
-      price: 'string',
-      address: 'string',
-      note: 'string',
-      isDeleted: false
-    };
-  }
-
 
   // getError(): Observable<any> {
   //   let id = 675353;
