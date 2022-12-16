@@ -20,7 +20,7 @@ th {
 /* List Pubs */
 
 h4 {
-  color: #333 !important;
+  color: #333;
 }
 
 [class*="col-"]:not([class*="sticky-"]):not([class*="position-"]) {
@@ -64,9 +64,12 @@ h4 {
         font-size: 90%;        
         padding: 5px 10px;
         margin: 0;
-        color: #333 !important;
+        color: #333;
         &:first-child {
           margin: 0 10px;
+        }
+        a {
+          color: #333;
         }
       }
     }
@@ -91,8 +94,14 @@ h4 {
 
 .badge {
   display: table;
+  font-size: 0.8em;
 }
 
 .icon-et-map {
   font-size: 30px;
+  font-weight: bold;
+}
+
+.button.button-dark {
+  color:white !important;
 }

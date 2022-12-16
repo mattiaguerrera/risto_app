@@ -58,21 +58,32 @@
 </div> -->
 
 
-<div class="mw-md mx-auto">  
+<div class="mw-md mx-auto">
   <ul class="list-unstyled mb-4">
-    <li *ngFor="let pub of pubList">      
+    <li *ngFor="let pub of pubList">
       <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center">
         <li class="entry mb-0 col-sm-12">
-          <h4 class="font-secondary nott mb-0" style="font-family: poppins, sans-serif !important; font-size: 18px; font-weight: 600 !important;">{{ pub.name }}</h4>
+          <h4 class="font-secondary nott mb-0"
+            style="font-family: poppins, sans-serif !important; font-size: 18px; font-weight: 600 !important;">{{
+            pub.name }}</h4>
           <div class="entry-meta mt-1">
             <ul>
+              <li>
+                <div style="display: flex;">
+                  <app-rating [rating]="pub.rating"></app-rating> <span>{{ pub.numberOfReviews }} recensioni</span>
+                </div>
+              </li>
+              <li><span
+                  style="font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">{{
+                  pub.priceLevel | replace : '[$]' : '€' }}</span></li>
               <li><span class="badge bg-info text-white">{{ pub.category }}</span></li>
-              <li><app-rating [rating]="pub.rating"></app-rating> {{ pub.numberOfReviews }} recensioni</li>
-              <li><span style="font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">{{ pub.priceLevel }}</span></li>
-              <li><span class="badge bg-secondary text-white">{{ pub.address }}</span></li>
-              <li><a target="_blank" href="{{pub.website}}"><span class="badge bg-secondary text-white">WebSite</span></a></li>
-              <li><a target="_blank" href="{{pub.webUrl}}"><span class="badge bg-secondary text-white">Tripadvisor Link</span></a></li>
-              <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}" rel="noopener"><span class="badge bg-secondary text-white"><i class="icon-et-map"></i></span></a></li>
+              <li><span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span></li>
+              <li><a class="button button-mini button-dark button-rounded" target="_blank"
+                  href="{{pub.website}}"><span>WebSite <i class="icon-line-external-link"></i></span></a></li>
+              <li><a class="button button-mini button-dark button-rounded" target="_blank"
+                  href="{{pub.webUrl}}"><span>Tripadvisor <i class="icon-tripadvisor"></i></span></a></li>
+              <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}" rel="noopener"><i
+                    class="icon-et-map"></i></a></li>
             </ul>
           </div>
         </li>

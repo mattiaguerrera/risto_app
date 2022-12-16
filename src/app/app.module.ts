@@ -22,6 +22,7 @@ import { LoginComponent } from './user/components/login/login.component';
 import { RegistrationComponent } from './user/components/registration/registration.component';
 import { SliderComponent } from './slider/slider.component';
 import { RatingComponent } from './rating/rating.component';
+import { PipeModule } from './pipe/pipe.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { RatingComponent } from './rating/rating.component';
     ReactiveFormsModule,
     MaterialModule,
     MatNativeDateModule,
+    PipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
