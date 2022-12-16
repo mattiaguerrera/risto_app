@@ -37,12 +37,14 @@ h4 {
 
   .entry {
     box-shadow: none !important;
-
-    // h4 {
-    //   font-size: 1.375rem;
-    //   font-weight: 700;
-    //   color: #333 !important;
-    // }
+    .image-box {
+      background-position: 50% center;
+      background-size: cover;
+      height: 100%;
+      background-repeat: no-repeat;
+      display: block;
+      width: 100%;
+    }
   }
   .entry-meta {
     position: relative;
@@ -61,7 +63,7 @@ h4 {
         font-size: 0.85rem;
         font-weight: 400;
         color: #999;
-        font-size: 90%;        
+        font-size: 90%;
         padding: 5px 10px;
         margin: 0;
         color: #333;
@@ -103,5 +105,5 @@ h4 {
 }
 
 .button.button-dark {
-  color:white !important;
+  color: white !important;
 }
