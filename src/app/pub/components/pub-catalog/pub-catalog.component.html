@@ -69,9 +69,12 @@
               </div>
             </div>
             <div class="col-sm-9">
-              <h4 class="font-secondary nott mb-0"
+              <div style="">
+                <h4 class="font-secondary nott mb-0"
                 style="font-family: poppins, sans-serif !important; font-size: 18px; font-weight: 600 !important;">
                 {{ pub.name }}</h4>
+                <span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span>
+              </div>              
               <div class="entry-meta mt-1">
                 <ul>
                   <li>
@@ -80,17 +83,17 @@
                       <span style="padding:4px 0 4px 5px;">{{ pub.numberOfReviews }} recensioni</span>
                     </div>
                   </li>
+                </ul>
+                <ul>
+                  <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}"
+                      rel="noopener"><i class="icon-et-map"></i></a></li>
                   <li><span
                       style="font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
                       {{ pub.priceLevel | replace : '[$]' : '€' }}</span></li>
-                  <li><span class="badge bg-info text-white">{{ pub.category }}</span></li>
-                  <li><span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span></li>
-                  <li><a class="button button-mini button-dark button-rounded" target="_blank"
+                  <li style="margin-left: auto;"><a class="button button-mini" target="_blank"
                       href="{{pub.website}}"><span>WebSite <i class="icon-line-external-link"></i></span></a></li>
-                  <li><a class="button button-mini button-dark button-rounded" target="_blank"
-                      href="{{pub.webUrl}}"><span>Tripadvisor <i class="icon-tripadvisor"></i></span></a></li>
-                  <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}"
-                      rel="noopener"><i class="icon-et-map"></i></a></li>
+                  <li><a class="button button-mini" target="_blank" href="{{pub.webUrl}}"><span>Tripadvisor <i
+                          class="icon-tripadvisor"></i></span></a></li>
                 </ul>
               </div>
             </div>
