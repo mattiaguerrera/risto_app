@@ -60,7 +60,7 @@
 
 <div class="mw-md mx-auto">
   <ul class="list-unstyled mb-4">
-    <li *ngFor="let pub of pubList">
+    <li *ngFor="let pub of itemsToDisplay">
       <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center">
         <li class="entry mb-0 col-sm-12">
           <div class="row">
@@ -72,7 +72,8 @@
               <div style="">
                 <h4 class="font-secondary nott mb-0"
                   style="font-family: poppins, sans-serif !important; font-size: 24px; font-weight: 600 !important;">
-                  {{ pub.name }}<i class="icon-heart3" style="margin-left: 5px; position: absolute; top: -5px; font-size: 16px; color: #2C3E50;"></i>                
+                  {{ pub.name }}<i class="icon-heart3"
+                    style="margin-left: 5px; position: absolute; top: -5px; font-size: 16px; color: #2C3E50;"></i>
                 </h4>
                 <span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span>
               </div>
@@ -104,3 +105,12 @@
     </li>
   </ul>
 </div>
+
+<span>Risultati: {{ pubs.length }}</span>
+<app-pagination
+  [current]="current"
+  [total]="total"
+  (goTo)="onGoTo($event)"
+  (next)="onNext($event)"
+  (previous)="onPrevious($event)"
+></app-pagination>

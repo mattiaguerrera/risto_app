@@ -9,7 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from './material/material.module';
 import { FooterComponent } from './footer/footer.component';
@@ -23,6 +22,8 @@ import { RegistrationComponent } from './user/components/registration/registrati
 import { SliderComponent } from './slider/slider.component';
 import { RatingComponent } from './rating/rating.component';
 import { PipeModule } from './pipe/pipe.module';
+import { PaginationComponent } from './pagination/pagination.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PipeModule } from './pipe/pipe.module';
     PageNotFoundComponent,
     RegistrationComponent,
     SliderComponent,
-    RatingComponent
+    RatingComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

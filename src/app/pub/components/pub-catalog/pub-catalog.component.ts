@@ -1,7 +1,4 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Pub } from '../../models/pub';
@@ -13,28 +10,40 @@ import { PubService } from '../../services/pub.service';
 })
 export class PubCatalogComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'city', 'type', 'price', 'vote'];
-  dataSource!: MatTableDataSource<Pub>;
+  // dataSource!: MatTableDataSource<Pub>;
   sub: Subscription;
-  pubList: Pub[];
+  pubs: Pub[] = [];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  /* Pagination */
+  public current = 1;
+  public itemsToDisplay: Pub[] = [];
+  public perPage = 10;
+  public total = 0;
+
+
+  // @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private router: Router,
     private pubService: PubService) {
     this.sub = new Subscription();
-    this.pubList = [];
+    this.pubs = [];
   }
 
   ngOnInit() {
     this.sub = this.pubService.get().subscribe({
       next: (data: Pub[]) => {
-        this.dataSource = new MatTableDataSource(data);
-        if (this.dataSource) {
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-          this.pubList = data; // test
+        // this.dataSource = new MatTableDataSource(data);
+        // if (this.dataSource) {
+        // this.dataSource.paginator = this.paginator;
+        // this.dataSource.sort = this.sort;          
+        //}
+        if (data) {
+          this.pubs = data;
+          this.itemsToDisplay = this.paginate(this.current, this.perPage);
+          this.total = Math.ceil(this.pubs.length / this.perPage);
         }
+
       },
       error: (error: any) => {
         console.log(error);
@@ -43,18 +52,40 @@ export class PubCatalogComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.dataSource) {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
+    // if (this.dataSource) {
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    // }
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // const filterValue = (event.target as HTMLInputElement).value;
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
+  }
+
+  /* Pagination Methods */
+  public onGoTo(page: number): void {
+    this.current = page;
+    this.itemsToDisplay = this.paginate(this.current, this.perPage);
+  }
+
+  public onNext(page: number): void {
+    this.current = page + 1;
+    this.itemsToDisplay = this.paginate(this.current, this.perPage);
+  }
+
+  public onPrevious(page: number): void {
+    this.current = page - 1;
+    this.itemsToDisplay = this.paginate(this.current, this.perPage);
+  }
+
+  public paginate(current: number, perPage: number): Pub[] {
+    this.itemsToDisplay = this.pubs;
+    const items = [...this.itemsToDisplay.slice((current - 1) * perPage).slice(0, perPage)];
+    return items;
   }
 }
