@@ -71,10 +71,11 @@
             <div class="col-sm-9">
               <div style="">
                 <h4 class="font-secondary nott mb-0"
-                style="font-family: poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
-                {{ pub.name }}</h4>
+                  style="font-family: poppins, sans-serif !important; font-size: 24px; font-weight: 600 !important;">
+                  {{ pub.name }}<i class="icon-heart3" style="margin-left: 5px; position: absolute; top: -5px; font-size: 16px; color: #2C3E50;"></i>                
+                </h4>
                 <span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span>
-              </div>              
+              </div>
               <div class="entry-meta mt-1">
                 <ul>
                   <li>
@@ -85,8 +86,8 @@
                   </li>
                 </ul>
                 <ul>
-                  <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}"
-                      rel="noopener" title="Google Maps"><i class="i-circled icon-adjust icon-map-marked-alt"></i></a></li>
+                  <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}" rel="noopener"
+                      title="Google Maps"><i class="i-circled icon-adjust icon-map-marked-alt"></i></a></li>
                   <li><span
                       style="font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
                       {{ pub.priceLevel | replace : '[$]' : '€' | trim }}</span></li>
