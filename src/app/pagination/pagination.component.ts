@@ -15,10 +15,13 @@ import {
 export class PaginationComponent implements OnChanges {
   @Input() current: number = 0;
   @Input() total: number = 0;
+  @Input() totalItems: number = 0;
 
-  @Output() goTo: EventEmitter<number> = new EventEmitter<number>();
-  @Output() next: EventEmitter<number> = new EventEmitter<number>();
-  @Output() previous: EventEmitter<number> = new EventEmitter<number>();
+  @Output() goTo = new EventEmitter<number>();
+  @Output() next = new EventEmitter<number>();
+  @Output() previous = new EventEmitter<number>();
+  @Output() setShowedItems = new EventEmitter<number>();
+  @Output() noItemsClicked = new EventEmitter<number>();
 
   public pages: number[] = [];
 
@@ -44,7 +47,7 @@ export class PaginationComponent implements OnChanges {
   }
 
   private getPages(current: number, total: number): number[] {
-    if (total <= 7) {
+    if (total <= 5) {
       return [...Array(total).keys()].map((x) => ++x);
     }
 
@@ -58,4 +61,9 @@ export class PaginationComponent implements OnChanges {
 
     return [1, 2, 3, 4, 5, -1, total];
   }
+
+  onOptionsSelected(value: string) {
+    this.noItemsClicked.emit(Number(value));
+  }
+
 }

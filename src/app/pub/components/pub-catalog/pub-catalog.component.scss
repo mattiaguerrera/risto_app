@@ -104,7 +104,29 @@ h4 {
   height: 38px !important;
   line-height: 38px !important;
 }
+.i-circled {
+  background-color: #9acd32;
+  &:hover {
+    background-color: var(--themecolor);
+  }
+}
+
+.icon-heart3 {
+  margin-left: 5px;
+  position: absolute;
+  top: -5px;
+  font-size: 16px;
+  color: var(--themecolor);
+}
 
 .button.button-mini {
   color: white !important;
+}
+
+.container-pubs {
+  .list-unstyled {
+    li {
+      transition: opacity .5s linear;
+    }
+  }
 }

@@ -8,21 +8,18 @@ import { PubService } from '../../services/pub.service';
   templateUrl: './pub-catalog.component.html',
   styleUrls: ['./pub-catalog.component.scss']
 })
-export class PubCatalogComponent implements AfterViewInit {
+export class PubCatalogComponent {
   displayedColumns: string[] = ['id', 'name', 'city', 'type', 'price', 'vote'];
-  // dataSource!: MatTableDataSource<Pub>;
   sub: Subscription;
   pubs: Pub[] = [];
 
   /* Pagination */
   public current = 1;
   public itemsToDisplay: Pub[] = [];
-  public perPage = 10;
-  public total = 0;
-
-
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // @ViewChild(MatSort) sort!: MatSort;
+  public perPage = 25;
+  public total = 25;
+  public totalItems = 25;
+  public selectedNoItems = 0;
 
   constructor(private router: Router,
     private pubService: PubService) {
@@ -33,15 +30,9 @@ export class PubCatalogComponent implements AfterViewInit {
   ngOnInit() {
     this.sub = this.pubService.get().subscribe({
       next: (data: Pub[]) => {
-        // this.dataSource = new MatTableDataSource(data);
-        // if (this.dataSource) {
-        // this.dataSource.paginator = this.paginator;
-        // this.dataSource.sort = this.sort;          
-        //}
         if (data) {
           this.pubs = data;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.pubs.length / this.perPage);
+          this.initView();
         }
 
       },
@@ -51,11 +42,12 @@ export class PubCatalogComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    // if (this.dataSource) {
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.sort;
-    // }
+  initView() {
+    if(this.pubs) {
+      this.itemsToDisplay = this.paginate(this.current, this.perPage);
+      this.total = Math.ceil(this.pubs.length / this.perPage);
+      this.totalItems = this.pubs.length;
+    }    
   }
 
   applyFilter(event: Event) {
@@ -86,6 +78,12 @@ export class PubCatalogComponent implements AfterViewInit {
   public paginate(current: number, perPage: number): Pub[] {
     this.itemsToDisplay = this.pubs;
     const items = [...this.itemsToDisplay.slice((current - 1) * perPage).slice(0, perPage)];
+    console.log(items.length);
     return items;
+  }
+
+  setNoItems(noSelected: number) {
+    this.perPage = noSelected;
+    this.initView();
   }
 }

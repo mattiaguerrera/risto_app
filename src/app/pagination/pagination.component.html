@@ -1,42 +1,37 @@
-<nav aria-label="pagination" class="pagination-box">
-  <ul>
-    <li>
-      <button
-        aria-label="Go To Previous Page"
-        [attr.aria-disabled]="current === 1"
-        [disabled]="current === 1"
-        (click)="onPrevious()"
-      >
-        Previous
-      </button>
-    </li>
-    <li *ngFor="let page of pages; index as i">
-      <a
-        *ngIf="page !== -1; else more"
-        class="internal"
-        [attr.aria-current]="page === current ? 'page' : null"
-        [attr.aria-label]="
-          page === current ? 'Current Page, Page ' + page : 'Go to Page ' + page
-        "
-        [class.current]="page === current"
-        tabindex="0"
-        (click)="onGoTo(page)"
-        (keyup.enter)="onGoTo(page)"
-        >{{ page }}</a
-      >
-      <ng-template #more>
-        <a class="more"> ... </a>
-      </ng-template>
-    </li>
-    <li>
-      <button
-        aria-label="Go To Next Page"
-        [attr.aria-disabled]="current === total"
-        [disabled]="current === total"
-        (click)="onNext()"
-      >
-        Next
-      </button>
-    </li>
-  </ul>
-</nav>
+<div class="row align-items-center pagination-box">
+  <div class="col-sm-6 me-auto">
+    <!-- <h4 class="mb-0 d-flex justify-content-center justify-content-sm-start"><small class="text-muted">
+        Showing Page: <a href="#">1</a> of 8 Pages</small>
+    </h4> -->
+    <span>Risultati: {{ totalItems }}</span>
+  </div>
+  <div class="col-sm-6" style="display: flex;">
+    <select title="Select items" class="custom-select sm-form-control border-form-control valid"
+    #mySelect
+    (change)='onOptionsSelected(mySelect.value)'>      
+      <option value="10">10</option>
+      <option value="25" selected="">25</option>
+      <option value="50">50</option>
+      <option value="75">75</option>
+      <option value="100">100</option>
+    </select>
+    <ul class="pagination justify-content-center justify-content-sm-end mt-3 mt-sm-0 mb-0">
+      <li class="page-item">
+        <a class="page-link" aria-label="Go To Previous Page" (click)="onPrevious()">«</a>
+      </li>
+      <li *ngFor="let page of pages; index as i" class="page-item">
+        <a *ngIf="page !== -1; else more" class="page-link" 
+          [attr.aria-current]="page === current ? 'page' : null"
+          [attr.aria-label]="page === current ? 'Current Page, Page ' + page : 'Go to Page ' + page" 
+          [class.current]="page === current" tabindex="0" (click)="onGoTo(page)" (keyup.enter)="onGoTo(page)">
+          {{ page }}</a>
+        <ng-template #more>
+          <a class="page-link more"> ... </a>
+        </ng-template>
+      </li>
+      <li class="page-item">
+        <a class="page-link" aria-label="Go To Next Page" (click)="onNext()">»</a>
+      </li>
+    </ul>
+  </div>
+</div>
