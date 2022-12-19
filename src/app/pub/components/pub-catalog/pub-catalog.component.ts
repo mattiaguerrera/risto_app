@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Pub } from '../../models/pub';
@@ -12,7 +12,7 @@ import { PubService } from '../../services/pub.service';
   styleUrls: ['./pub-catalog.component.scss']
 })
 export class PubCatalogComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id','name', 'city', 'type', 'price', 'vote'];
+  displayedColumns: string[] = ['id', 'name', 'city', 'type', 'price', 'vote'];
   dataSource!: MatTableDataSource<Pub>;
   sub: Subscription;
   pubList: Pub[];
@@ -21,32 +21,32 @@ export class PubCatalogComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private router: Router,
-              private pubService: PubService) {
-    this.sub = new Subscription(); 
+    private pubService: PubService) {
+    this.sub = new Subscription();
     this.pubList = [];
   }
 
-  ngOnInit() {  
+  ngOnInit() {
     this.sub = this.pubService.get().subscribe({
       next: (data: Pub[]) => {
         this.dataSource = new MatTableDataSource(data);
-        if(this.dataSource) {
+        if (this.dataSource) {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           this.pubList = data; // test
-        }    
+        }
       },
       error: (error: any) => {
         console.log(error);
       }
-    });         
+    });
   }
 
   ngAfterViewInit() {
-    if(this.dataSource) {
+    if (this.dataSource) {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    }    
+    }
   }
 
   applyFilter(event: Event) {

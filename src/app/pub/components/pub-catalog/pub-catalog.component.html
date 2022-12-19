@@ -71,7 +71,7 @@
             <div class="col-sm-9">
               <div style="">
                 <h4 class="font-secondary nott mb-0"
-                style="font-family: poppins, sans-serif !important; font-size: 18px; font-weight: 600 !important;">
+                style="font-family: poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
                 {{ pub.name }}</h4>
                 <span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span>
               </div>              
@@ -86,10 +86,10 @@
                 </ul>
                 <ul>
                   <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}"
-                      rel="noopener"><i class="icon-et-map"></i></a></li>
+                      rel="noopener" title="Google Maps"><i class="i-circled icon-adjust icon-map-marked-alt"></i></a></li>
                   <li><span
                       style="font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
-                      {{ pub.priceLevel | replace : '[$]' : '€' }}</span></li>
+                      {{ pub.priceLevel | replace : '[$]' : '€' | trim }}</span></li>
                   <li style="margin-left: auto;"><a class="button button-mini" target="_blank"
                       href="{{pub.website}}"><span>WebSite <i class="icon-line-external-link"></i></span></a></li>
                   <li><a class="button button-mini" target="_blank" href="{{pub.webUrl}}"><span>Tripadvisor <i

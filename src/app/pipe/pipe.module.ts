@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReplacePipe } from './replace.pipe';
 import { CityPipe } from './city.pipe';
+import { TrimPipe } from './trim.pipe';
 
 
 @NgModule({
   declarations: [
     ReplacePipe,
-    CityPipe
+    CityPipe,
+    TrimPipe
   ],
   exports: [
     ReplacePipe,
-    CityPipe
+    CityPipe,
+    TrimPipe
   ],
   imports: [
     CommonModule
