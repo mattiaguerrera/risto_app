@@ -34,7 +34,8 @@
             "scripts": [
               "src/assets/canvas/js/jquery.js",
               "src/assets/canvas/js/plugins.min.js",
-              "src/assets/canvas/js/functions.js"
+              "src/assets/canvas/js/functions.js",
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {
@@ -43,7 +44,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "1000kb",
-                  "maximumError": "1mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -107,7 +108,8 @@
             "scripts": [
               "src/assets/canvas/js/jquery.js",
               "src/assets/canvas/js/plugins.min.js",
-              "src/assets/canvas/js/functions.js"]
+              "src/assets/canvas/js/functions.js",
+              "src/assets/js/custom.js"]
           }
         },
         "deploy": {
