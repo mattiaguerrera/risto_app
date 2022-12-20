@@ -6,7 +6,6 @@ import {
   Output,
   SimpleChanges,
 } from "@angular/core";
-
 import * as script from 'src/assets/js/custom.js';
 
 
@@ -67,8 +66,8 @@ export class PaginationComponent implements OnChanges {
 
   onOptionsSelected(value: string) {
     this.noItemsClicked.emit(Number(value));
-    // if(script != undefined)  // TODO scroll to top after change?
-    //   script.init();
+    if(script != undefined)  // TODO scroll to top after change?
+      script.init();
   }
 
 }
