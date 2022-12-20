@@ -6,8 +6,8 @@ import {
   Output,
   SimpleChanges,
 } from "@angular/core";
-import * as script from 'src/assets/js/custom.js';
 
+declare function scrollToTitle(): any;
 
 @Component({
   selector: "app-pagination",
@@ -66,8 +66,9 @@ export class PaginationComponent implements OnChanges {
 
   onOptionsSelected(value: string) {
     this.noItemsClicked.emit(Number(value));
-    if(script != undefined)  // TODO scroll to top after change?
-      script.init();
+    // if(script != undefined)  // TODO scroll to top after change?
+    //   script.scrollToTitle();
+    scrollToTitle();
   }
 
 }
