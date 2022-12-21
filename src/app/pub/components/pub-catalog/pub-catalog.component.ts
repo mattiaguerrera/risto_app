@@ -1,15 +1,18 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Pub } from '../../models/pub';
 import { PubService } from '../../services/pub.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PubDetailComponent } from '../pub-detail/pub-detail.component';
+import { computeStyles } from '@popperjs/core';
+
 @Component({
   selector: 'app-pub-catalog',
   templateUrl: './pub-catalog.component.html',
   styleUrls: ['./pub-catalog.component.scss']
 })
 export class PubCatalogComponent {
-  displayedColumns: string[] = ['id', 'name', 'city', 'type', 'price', 'vote'];
   sub: Subscription;
   pubs: Pub[] = [];
 
@@ -22,7 +25,8 @@ export class PubCatalogComponent {
   public selectedNoItems = 0;
 
   constructor(private router: Router,
-    private pubService: PubService) {
+              private pubService: PubService,
+              public dialog: MatDialog) {
     this.sub = new Subscription();
     this.pubs = [];
   }
@@ -42,12 +46,16 @@ export class PubCatalogComponent {
     });
   }
 
+  onDestroy() {
+    this.sub.unsubscribe;
+  }
+
   initView() {
-    if(this.pubs) {
+    if (this.pubs) {
       this.itemsToDisplay = this.paginate(this.current, this.perPage);
       this.total = Math.ceil(this.pubs.length / this.perPage);
       this.totalItems = this.pubs.length;
-    }    
+    }
   }
 
   applyFilter(event: Event) {
@@ -85,5 +93,20 @@ export class PubCatalogComponent {
   setNoItems(noSelected: number) {
     this.perPage = noSelected;
     this.initView();
+  }
+
+  /* Modal Dialog */
+  openDialog(idPub: number) {
+    const dialogRef = this.dialog.open(PubDetailComponent, {
+      height: '90%',
+      width: '60%',
+      data: {
+        id: idPub
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

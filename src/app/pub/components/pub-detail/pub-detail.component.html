@@ -1,1 +1,95 @@
-<p>pub-detail works!</p>
+<div *ngIf="pub">
+    <h2 mat-dialog-title>Dettaglio Ristorante</h2>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="pubForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" type="text" class="form-control" id="name" [(ngModel)]="pub.name">
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input formControlName="image" type="text" class="form-control" id="image" [(ngModel)]="pub.image">
+            </div>
+            <div class="form-group">
+                <label for="rankingPosition">Ranking Position</label>
+                <input formControlName="rankingPosition" type="text" class="form-control" id="rankingPosition"
+                    [(ngModel)]="pub.rankingPosition">
+            </div>
+            <div class="form-group">
+                <label for="priceLevel">Price Level</label>
+                <input formControlName="priceLevel" type="text" class="form-control" id="priceLevel"
+                    [(ngModel)]="pub.priceLevel">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input formControlName="category" type="text" class="form-control" id="category"
+                    [(ngModel)]="pub.category">
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input formControlName="rating" type="text" class="form-control" id="rating" [(ngModel)]="pub.rating">
+            </div>
+            <div class="form-check">
+                <input formControlName="isClosed" type="checkbox" class="form-check-input" id="isClosed"
+                    [(ngModel)]="pub.isClosed">
+                <label class="form-check-label" for="isClosed">Is Closed</label>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input formControlName="phone" type="text" class="form-control" id="phone" [(ngModel)]="pub.phone">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input formControlName="address" type="text" class="form-control" id="address"
+                    [(ngModel)]="pub.address">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input formControlName="city" type="text" class="form-control" id="city" [(ngModel)]="pub.city">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName="email" type="text" class="form-control" id="email" [(ngModel)]="pub.email">
+            </div>
+            <div class="form-group">
+                <label for="cuisine">Cuisine</label>
+                <input formControlName="cuisine" type="text" class="form-control" id="cuisine"
+                    [(ngModel)]="pub.cuisine">
+            </div>
+            <div class="form-group">
+                <label for="latitude">Latitude</label>
+                <input formControlName="latitude" type="text" class="form-control" id="latitude"
+                    [(ngModel)]="pub.latitude">
+            </div>
+            <div class="form-group">
+                <label for="longitude">Longitude</label>
+                <input formControlName="longitude" type="text" class="form-control" id="longitude"
+                    [(ngModel)]="pub.longitude">
+            </div>
+            <div class="form-group">
+                <label for="webUrl">Web Url</label>
+                <input formControlName="webUrl" type="text" class="form-control" id="webUrl" [(ngModel)]="pub.webUrl">
+            </div>
+            <div class="form-group">
+                <label for="website">Website</label>
+                <input formControlName="website" type="text" class="form-control" id="website"
+                    [(ngModel)]="pub.website">
+            </div>
+            <div class="form-group">
+                <label for="numberOfReviews">Number Of Reviews</label>
+                <input formControlName="numberOfReviews" type="text" class="form-control" id="numberOfReviews"
+                    [(ngModel)]="pub.numberOfReviews">
+            </div>
+            <div class="form-check">
+                <input formControlName="isDeleted" type="checkbox" class="form-check-input" id="isDeleted"
+                    [(ngModel)]="pub.isDeleted">
+                <label class="form-check-label" for="isDeleted">Is Deleted</label>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Chiudi</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial type="submit"
+            [disabled]="!pubForm.valid">Save</button>
+    </mat-dialog-actions>
+</div>

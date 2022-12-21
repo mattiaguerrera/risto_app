@@ -91,6 +91,15 @@ h4 {
       opacity: 0.5;
     }
   }
+
+  .action-detail-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    button {
+      font-size: 22px;
+    }
+  }
 }
 
 .badge {
@@ -103,8 +112,6 @@ h4 {
   width: 38px !important;
   height: 38px !important;
   line-height: 38px !important;
-}
-.i-circled {
   background-color: #9acd32;
   &:hover {
     background-color: var(--themecolor);
@@ -126,7 +133,7 @@ h4 {
 .container-pubs {
   .list-unstyled {
     li {
-      transition: opacity .5s linear;
+      transition: opacity 0.5s linear;
     }
   }
 }

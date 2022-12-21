@@ -9,7 +9,7 @@
               </div>
             </div>
             <div class="col-sm-9">
-              <div style="">
+              <div>
                 <h4 class="font-secondary nott mb-0"
                   style="font-family: poppins, sans-serif !important; font-size: 24px; font-weight: 600 !important;">
                   {{ pub.name }}<i class="icon-heart3"></i>
@@ -36,6 +36,12 @@
                   <li><a class="button button-mini" target="_blank" href="{{pub.webUrl}}"><span>Tripadvisor <i
                           class="icon-tripadvisor"></i></span></a></li>
                 </ul>
+              </div>
+              <div class="action-detail-box">
+                <!-- <a href="src\app\pub\components\pub-detail.html" class="" data-lightbox="ajax"><i class="i-circled i-light icon-edit1"></i></a>                 -->
+                <button title="Edit Restaurant" type="button" mat-button (click)="openDialog(pub.id)">
+                  <i class="i-plain icon-edit1"></i>
+                </button>
               </div>
             </div>
           </div>
