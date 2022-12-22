@@ -15,36 +15,17 @@ export class PubDetailComponent {
 
   sub: Subscription;
   pub: Pub;
-
-  pubForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    image: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    rankingPosition: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    priceLevel: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    category: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    rating: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    isClosed: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    address: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    email: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    cuisine: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    latitude: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    longitude: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    webUrl: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    website: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    numberOfReviews: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')]),
-    isDeleted: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')])
-  });
+  pubForm: FormGroup;
 
   constructor(private pubService: PubService,
+    private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
     this.sub = new Subscription();
-    this.pub = this.initPub();
+    this.pub = this.initPubModel();
+    this.pubForm = new FormGroup({});
   }
 
   ngOnInit() {
-    debugger;
     const id = this.data.id as number;
     if (id > 0) {
       this.sub = this.pubService.get()
@@ -58,7 +39,9 @@ export class PubDetailComponent {
           next: (data: Pub[]) => {
             if (data) {
               this.pub = data[0];
+              this.fillFormGroup(data[0]);
             }
+
           },
           error: (error: any) => {
             console.log(error);
@@ -68,13 +51,38 @@ export class PubDetailComponent {
   }
 
   onSubmit() {
-    console.warn(this.pubForm.value);
-    if (this.pubForm.valid) {
+    console.log('onSubmit');
+    console.log(this.pubForm?.value);
+    if (this.pubForm?.valid) {
     }
   }
 
-  private initPub() {
-    return this.pub = {
+  fillFormGroup(pub: Pub) {
+
+    this.pubForm = this.fb.group({
+      name: ['', Validators.required],
+      image: [pub.image, Validators.required],
+      rankingPosition: [pub.rankingPosition, [Validators.required, Validators.pattern('/^[0-9]\d*$/')]],
+      priceLevel: [pub.priceLevel, Validators.required],
+      category: [pub.category, [Validators.required, Validators.pattern('[a-zA-Z].*')]],
+      rating: [pub.rating, [Validators.required, Validators.pattern('^[0-5]$')]],
+      isClosed: [pub.isClosed],
+      phone: [pub.phone],
+      address: [pub.address, Validators.required],
+      city: [pub.city, Validators.required],
+      email: [pub.email, [Validators.required, Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}')]],
+      cuisine: [pub.cuisine],
+      latitude: [pub.latitude, Validators.pattern('^(\d+(?:[\.\,]\d{6})?)$')],
+      longitude: [pub.longitude, Validators.pattern('^(\d+(?:[\.\,]\d{6})?)$')],
+      webUrl: [pub.webUrl],
+      website: [pub.website],
+      numberOfReviews: [pub.numberOfReviews, [Validators.required, Validators.pattern('/^[0-9]\d*$/')]],
+      isDeleted: [pub.isDeleted]
+    });
+  }
+
+  private initPubModel(): Pub {
+    return {
       id: 0,
       name: '',
       image: '',

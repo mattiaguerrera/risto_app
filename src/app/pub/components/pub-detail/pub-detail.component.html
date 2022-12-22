@@ -1,95 +1,130 @@
-<div *ngIf="pub">
-    <h2 mat-dialog-title>Dettaglio Ristorante</h2>
-    <mat-dialog-content class="mat-typography">
-        <form [formGroup]="pubForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
+<div *ngIf="pub.id">
+
+    <form [formGroup]="pubForm" (ngSubmit)="onSubmit()">
+        <h2 mat-dialog-title>Dettaglio Ristorante</h2>
+        <mat-dialog-content class="mat-typography">
+            <div class="item-form-group">
                 <label for="name">Name</label>
-                <input formControlName="name" type="text" class="form-control" id="name" [(ngModel)]="pub.name">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="name" id="name">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="image">Image</label>
-                <input formControlName="image" type="text" class="form-control" id="image" [(ngModel)]="pub.image">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="image" id="image">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="rankingPosition">Ranking Position</label>
-                <input formControlName="rankingPosition" type="text" class="form-control" id="rankingPosition"
-                    [(ngModel)]="pub.rankingPosition">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="rankingPosition" id="rankingPosition">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="priceLevel">Price Level</label>
-                <input formControlName="priceLevel" type="text" class="form-control" id="priceLevel"
-                    [(ngModel)]="pub.priceLevel">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="priceLevel" id="priceLevel">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="category">Category</label>
-                <input formControlName="category" type="text" class="form-control" id="category"
-                    [(ngModel)]="pub.category">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="category" id="category">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="rating">Rating</label>
-                <input formControlName="rating" type="text" class="form-control" id="rating" [(ngModel)]="pub.rating">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="rating" id="rating">
+                </mat-form-field>
             </div>
-            <div class="form-check">
-                <input formControlName="isClosed" type="checkbox" class="form-check-input" id="isClosed"
-                    [(ngModel)]="pub.isClosed">
-                <label class="form-check-label" for="isClosed">Is Closed</label>
+            <div class="item-form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="isClosed" id="isClosed">
+                    <label class="form-check-label" for="isClosed">
+                        Is Closed
+                    </label>
+                </div>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="phone">Phone</label>
-                <input formControlName="phone" type="text" class="form-control" id="phone" [(ngModel)]="pub.phone">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="phone" id="phone">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="address">Address</label>
-                <input formControlName="address" type="text" class="form-control" id="address"
-                    [(ngModel)]="pub.address">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="address" id="address">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="city">City</label>
-                <input formControlName="city" type="text" class="form-control" id="city" [(ngModel)]="pub.city">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="city" id="city">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="email">Email</label>
-                <input formControlName="email" type="text" class="form-control" id="email" [(ngModel)]="pub.email">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="email" id="email">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="cuisine">Cuisine</label>
-                <input formControlName="cuisine" type="text" class="form-control" id="cuisine"
-                    [(ngModel)]="pub.cuisine">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="cuisine" id="cuisine">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="latitude">Latitude</label>
-                <input formControlName="latitude" type="text" class="form-control" id="latitude"
-                    [(ngModel)]="pub.latitude">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="latitude" id="latitude">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="longitude">Longitude</label>
-                <input formControlName="longitude" type="text" class="form-control" id="longitude"
-                    [(ngModel)]="pub.longitude">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="longitude" id="longitude">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="webUrl">Web Url</label>
-                <input formControlName="webUrl" type="text" class="form-control" id="webUrl" [(ngModel)]="pub.webUrl">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="webUrl" id="webUrl">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="website">Website</label>
-                <input formControlName="website" type="text" class="form-control" id="website"
-                    [(ngModel)]="pub.website">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="website" id="website">
+                </mat-form-field>
             </div>
-            <div class="form-group">
+            <div class="item-form-group">
                 <label for="numberOfReviews">Number Of Reviews</label>
-                <input formControlName="numberOfReviews" type="text" class="form-control" id="numberOfReviews"
-                    [(ngModel)]="pub.numberOfReviews">
+                <mat-form-field appearance="fill" style="width: 50vw !important">
+                    <input matInput formControlName="numberOfReviews" id="numberOfReviews">
+                </mat-form-field>
             </div>
-            <div class="form-check">
-                <input formControlName="isDeleted" type="checkbox" class="form-check-input" id="isDeleted"
-                    [(ngModel)]="pub.isDeleted">
-                <label class="form-check-label" for="isDeleted">Is Deleted</label>
+            <div class="item-form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="isDeleted" id="isDeleted">
+                    <label class="form-check-label" for="isDeleted">
+                        Is Deleted
+                    </label>
+                </div>
             </div>
-        </form>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Chiudi</button>
-        <button mat-button [mat-dialog-close]="true" cdkFocusInitial type="submit"
-            [disabled]="!pubForm.valid">Save</button>
-    </mat-dialog-actions>
+
+            <p>Form Status: {{ pubForm.status | json }}</p>
+            <p>Form Status: {{ pubForm.value | json }}</p>
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Chiudi</button>
+            <button mat-button type="submit">
+                Save
+            </button>
+        </mat-dialog-actions>
+    </form>
 </div>
