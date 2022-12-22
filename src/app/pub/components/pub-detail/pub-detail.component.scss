@@ -11,6 +11,11 @@
   margin-bottom: 10px;
   > label {
     display: block;
+    color: #fff;
+  }
+  .form-check {
+    > label {
+      color: #fff;
+    } 
   }
 }
-

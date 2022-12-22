@@ -9,36 +9,42 @@
               </div>
             </div>
             <div class="col-sm-9">
-              <div>
-                <h4 class="font-secondary nott mb-0"
-                  style="font-family: poppins, sans-serif !important; font-size: 24px; font-weight: 600 !important;">
-                  {{ pub.name }}<i class="icon-heart3"></i>
-                </h4>
-                <span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span>
-              </div>
-              <div class="entry-meta mt-1">
-                <ul>
-                  <li>
-                    <div style="display: flex;">
-                      <app-rating [rating]="pub.rating"></app-rating>
-                      <span style="padding:4px 0 4px 5px;">{{ pub.numberOfReviews }} recensioni</span>
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4 class="font-secondary nott mb-0"
+                    style="font-family: poppins, sans-serif !important; font-size: 24px; font-weight: 600 !important;">
+                    {{ pub.name }}<i class="icon-heart3"></i>
+                  </h4>
+                </div>
+                <div class="col-sm-12">
+                  <span class="badge bg-secondary text-white">{{ pub.address | getCity}}</span>
+                </div>
+                <div class="col-sm-12 entry-meta mt-1">
+                  <div style="display: flex;">
+                    <app-rating [rating]="pub.rating"></app-rating>
+                    <span style="padding:4px 0 4px 5px;">{{ pub.numberOfReviews }} recensioni</span>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-6" style="display: table;">
+                      <a style="display:table-cell;vertical-align:middle;width: 50px;" target="_blank"
+                        href="https://maps.google.com/?q={{pub.address}},{{pub.name}}" rel="noopener"
+                        title="Google Maps"><i class="i-circled icon-adjust icon-map-marked-alt"></i></a>
+                      <span
+                        style="display:table-cell;vertical-align:middle;font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
+                        {{ pub.priceLevel | replace : '[$]' : '€' | trim }}</span>
                     </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li><a target="_blank" href="https://maps.google.com/?q={{pub.address}},{{pub.name}}" rel="noopener"
-                      title="Google Maps"><i class="i-circled icon-adjust icon-map-marked-alt"></i></a></li>
-                  <li><span
-                      style="font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
-                      {{ pub.priceLevel | replace : '[$]' : '€' | trim }}</span></li>
-                  <li *ngIf="pub.website" style="margin-left: auto;"><a class="button button-mini" target="_blank"
-                      href="{{pub.website}}"><span>WebSite <i class="icon-line-external-link"></i></span></a></li>
-                  <li *ngIf="pub.webUrl"><a class="button button-mini" target="_blank" href="{{pub.webUrl}}"><span>Tripadvisor <i
-                          class="icon-tripadvisor"></i></span></a></li>
-                </ul>
+                    <div class="col-sm-6">
+                      <a *ngIf="pub.website" class="button button-mini pull-right" target="_blank"
+                        href="{{pub.website}}"><span>WebSite <i class="icon-line-external-link"></i></span></a>
+                      <a *ngIf="pub.webUrl" class="button button-mini pull-right" target="_blank"
+                        href="{{pub.webUrl}}"><span>Tripadvisor <i class="icon-line-external-link"></i></span></a>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="action-detail-box">
-                <!-- <a href="src\app\pub\components\pub-detail.html" class="" data-lightbox="ajax"><i class="i-circled i-light icon-edit1"></i></a>                 -->
                 <button title="Edit Restaurant" type="button" mat-button (click)="openDialog(pub.id)">
                   <i class="i-plain icon-edit1"></i>
                 </button>
@@ -52,13 +58,6 @@
 </div>
 
 <div class="mw-md mx-auto">
-<app-pagination
-  [current]="current"
-  [total]="total"
-  [totalItems]="totalItems"
-  (noItemsClicked)="setNoItems($event)"
-  (goTo)="onGoTo($event)"
-  (next)="onNext($event)"
-  (previous)="onPrevious($event)"
-></app-pagination>
+  <app-pagination [current]="current" [total]="total" [totalItems]="totalItems" (noItemsClicked)="setNoItems($event)"
+    (goTo)="onGoTo($event)" (next)="onNext($event)" (previous)="onPrevious($event)"></app-pagination>
 </div>
