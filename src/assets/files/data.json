@@ -9,7 +9,7 @@
       "priceLevel": "$",
       "category": "restaurant",
       "rating": 5,
-      "isClosed": false,
+      "isClosed": true,
       "phone": "+39 045 242 3452",
       "address": "Via Leoncino 31 Vicino Arena Verona, 37121, Verona Italy",
       "email": "info@labotteghetta.it",
@@ -22,8 +22,9 @@
       "longitude": "10.9959",
       "webUrl": "https://www.tripadvisor.com/Restaurant_Review-g187871-d8071417-Reviews-LA_BOTTEGHETTA-Verona_Province_of_Verona_Veneto.html",
       "website": "http://www.labotteghetta.it",
-      "numberOfReviews": 50,
-      "top": false
+      "numberOfReviews": "503",
+      "top": false,
+      "isDeleted": true
     },
     {
       "id": "2659054",

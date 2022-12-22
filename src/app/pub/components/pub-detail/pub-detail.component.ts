@@ -62,9 +62,10 @@ export class PubDetailComponent {
     console.log(this.pubForm?.value);
     if (this.pubForm?.valid) {
       const pub: Pub = this.pubForm.value;
+      pub.id = this.id;
       this.sub = this.pubService.update(pub).subscribe({
         next: () => {
-          this.router.navigate(['/pub-catalog']);
+          this.router.navigate(['ristoranti']);
         },
         error: (error: any) => {
           console.log(error);

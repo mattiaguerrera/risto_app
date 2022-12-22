@@ -7,8 +7,8 @@ import { LoginComponent } from './user/components/login/login.component';
 import { RegistrationComponent } from './user/components/registration/registration.component';
 
 const routes: Routes = [  
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/ristoranti', pathMatch: 'full' },
+  { path: 'ristoranti', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegistrationComponent },
   { path: 'pub-detail/:id', component: PubDetailComponent  },
