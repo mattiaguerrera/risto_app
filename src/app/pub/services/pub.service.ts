@@ -34,6 +34,7 @@ export class PubService {
         throw err;
       }));
   }
+  
   create(pub: Pub): Observable<Pub> {
     pub.id = 0;
     return this.http.post<Pub>(environment.urlPub, pub)

@@ -3,7 +3,7 @@
     <form [formGroup]="pubForm" (ngSubmit)="onSubmit()">
         <h2 mat-dialog-title>Dettaglio Ristorante</h2>
         <mat-dialog-content class="mat-typography">
-            <div class="item-form-group">
+            <div class="item-form-group" style="font-size: 12px">
                 <label for="name">Name</label>
                 <mat-form-field appearance="fill" style="width: 50vw !important">
                     <input matInput formControlName="name" id="name">
@@ -40,14 +40,6 @@
                 </mat-form-field>
             </div>
             <div class="item-form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" formControlName="isClosed" id="isClosed">
-                    <label class="form-check-label" for="isClosed">
-                        Is Closed
-                    </label>
-                </div>
-            </div>
-            <div class="item-form-group">
                 <label for="phone">Phone</label>
                 <mat-form-field appearance="fill" style="width: 50vw !important">
                     <input matInput formControlName="phone" id="phone">
@@ -57,12 +49,6 @@
                 <label for="address">Address</label>
                 <mat-form-field appearance="fill" style="width: 50vw !important">
                     <input matInput formControlName="address" id="address">
-                </mat-form-field>
-            </div>
-            <div class="item-form-group">
-                <label for="city">City</label>
-                <mat-form-field appearance="fill" style="width: 50vw !important">
-                    <input matInput formControlName="city" id="city">
                 </mat-form-field>
             </div>
             <div class="item-form-group">
@@ -109,6 +95,14 @@
             </div>
             <div class="item-form-group">
                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="isClosed" id="isClosed">
+                    <label class="form-check-label" for="isClosed">
+                        Is Closed
+                    </label>
+                </div>
+            </div>
+            <div class="item-form-group">
+                <div class="form-check">
                     <input class="form-check-input" type="checkbox" formControlName="isDeleted" id="isDeleted">
                     <label class="form-check-label" for="isDeleted">
                         Is Deleted
@@ -116,8 +110,8 @@
                 </div>
             </div>
 
-            <p>Form Status: {{ pubForm.status | json }}</p>
-            <p>Form Status: {{ pubForm.value | json }}</p>
+            <!-- <p>Form Status: {{ pubForm.status | json }}</p>
+            <p>Form Values: {{ pubForm.value | json }}</p> -->
 
         </mat-dialog-content>
         <mat-dialog-actions align="end">

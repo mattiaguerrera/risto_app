@@ -31,9 +31,9 @@
                   <li><span
                       style="font-family:poppins, sans-serif !important; font-size: 20px; font-weight: 600 !important;">
                       {{ pub.priceLevel | replace : '[$]' : '€' | trim }}</span></li>
-                  <li style="margin-left: auto;"><a class="button button-mini" target="_blank"
+                  <li *ngIf="pub.website" style="margin-left: auto;"><a class="button button-mini" target="_blank"
                       href="{{pub.website}}"><span>WebSite <i class="icon-line-external-link"></i></span></a></li>
-                  <li><a class="button button-mini" target="_blank" href="{{pub.webUrl}}"><span>Tripadvisor <i
+                  <li *ngIf="pub.webUrl"><a class="button button-mini" target="_blank" href="{{pub.webUrl}}"><span>Tripadvisor <i
                           class="icon-tripadvisor"></i></span></a></li>
                 </ul>
               </div>

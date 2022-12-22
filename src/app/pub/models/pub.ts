@@ -1,4 +1,4 @@
-export interface Pub {    
+export interface Pub {
    id: number;
    name: string;
    image: string;
@@ -18,4 +18,4 @@ export interface Pub {
    website: string;
    numberOfReviews: number;
    isDeleted: boolean;
-  }
+}

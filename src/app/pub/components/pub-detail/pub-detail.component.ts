@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { filter, map, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { map, Subscription } from 'rxjs';
 import { Pub } from '../../models/pub';
 import { PubService } from '../../services/pub.service';
 
@@ -16,18 +17,21 @@ export class PubDetailComponent {
   sub: Subscription;
   pub: Pub;
   pubForm: FormGroup;
+  private id: number;
 
   constructor(private pubService: PubService,
     private fb: FormBuilder,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
     this.sub = new Subscription();
     this.pub = this.initPubModel();
     this.pubForm = new FormGroup({});
+    this.id = 0;
   }
 
   ngOnInit() {
-    const id = this.data.id as number;
-    if (id > 0) {
+    this.id = this.data.id as number;
+    if (this.id > 0) {
       this.sub = this.pubService.get()
         .pipe(
           map((pubs: any) => {
@@ -41,7 +45,6 @@ export class PubDetailComponent {
               this.pub = data[0];
               this.fillFormGroup(data[0]);
             }
-
           },
           error: (error: any) => {
             console.log(error);
@@ -50,39 +53,50 @@ export class PubDetailComponent {
     }
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe;
+  }
+
   onSubmit() {
     console.log('onSubmit');
     console.log(this.pubForm?.value);
     if (this.pubForm?.valid) {
+      const pub: Pub = this.pubForm.value;
+      this.sub = this.pubService.update(pub).subscribe({
+        next: () => {
+          this.router.navigate(['/pub-catalog']);
+        },
+        error: (error: any) => {
+          console.log(error);
+        }
+      });
     }
   }
 
   fillFormGroup(pub: Pub) {
-
     this.pubForm = this.fb.group({
-      name: ['', Validators.required],
+      name: [pub.name, Validators.required],
       image: [pub.image, Validators.required],
-      rankingPosition: [pub.rankingPosition, [Validators.required, Validators.pattern('/^[0-9]\d*$/')]],
+      rankingPosition: [pub.rankingPosition, [Validators.required, Validators.pattern('^[0-9]\\d*$')]],
       priceLevel: [pub.priceLevel, Validators.required],
       category: [pub.category, [Validators.required, Validators.pattern('[a-zA-Z].*')]],
-      rating: [pub.rating, [Validators.required, Validators.pattern('^[0-5]$')]],
+      rating: [pub.rating, [Validators.required, Validators.pattern('^\\d*\\.?\\d*$')]],
       isClosed: [pub.isClosed],
       phone: [pub.phone],
       address: [pub.address, Validators.required],
-      city: [pub.city, Validators.required],
       email: [pub.email, [Validators.required, Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}')]],
       cuisine: [pub.cuisine],
-      latitude: [pub.latitude, Validators.pattern('^(\d+(?:[\.\,]\d{6})?)$')],
-      longitude: [pub.longitude, Validators.pattern('^(\d+(?:[\.\,]\d{6})?)$')],
+      latitude: [pub.latitude, Validators.pattern('^(\\d*\\.)?\\d+$')],
+      longitude: [pub.longitude, Validators.pattern('^(\\d*\\.)?\\d+$')],
       webUrl: [pub.webUrl],
       website: [pub.website],
-      numberOfReviews: [pub.numberOfReviews, [Validators.required, Validators.pattern('/^[0-9]\d*$/')]],
+      numberOfReviews: [pub.numberOfReviews, [Validators.required, Validators.pattern('^[0-9]\\d*$')]],
       isDeleted: [pub.isDeleted]
     });
   }
 
   private initPubModel(): Pub {
-    return {
+    let pub: Pub = {
       id: 0,
       name: '',
       image: '',
@@ -102,7 +116,12 @@ export class PubDetailComponent {
       website: '',
       numberOfReviews: 0,
       isDeleted: false
+    };
+    if (this.pub) {
+      this.pub.id = this.id;
+      pub = this.pub
     }
+    return pub
   }
 
 }
